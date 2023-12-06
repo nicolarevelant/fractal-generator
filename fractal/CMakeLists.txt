@@ -1,0 +1,1 @@
+add_library(fractal fractal.c)

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+	<object id="window" class="AdwWindow">
+		<property name="title">Fractal generator</property>
+		<property name="width-request">310</property>
+		<property name="height-request">610</property>
+		<child>
+			<object class="AdwBreakpoint">
+			<condition>max-width: 700</condition>
+			<setter object="split_view" property="collapsed">True</setter>
+			</object>
+		</child>
+		<property name="content">
+			<object class="AdwToolbarView">
+				<child type="top">
+					<object class="AdwHeaderBar">
+						<child>
+							<object id="toggle_pane_button" class="GtkToggleButton">
+								<property name="icon-name">sidebar-show-symbolic</property>
+								<property name="active"
+								          bind-source="split_view"
+								          bind-property="show-sidebar"
+								          bind-flags="bidirectional"/>
+							</object>
+						</child>
+						<child>
+							<object id="aboutBtn" class="GtkButton">
+								<property name="label">About</property>
+							</object>
+						</child>
+					</object>
+				</child>
+				<property name="content">
+					<object class="AdwOverlaySplitView" id="split_view">
+						<property name="sidebar">
+							<object id="mainBox" class="GtkBox">
+								<property name="orientation">vertical</property>
+							</object>
+						</property>
+					</object>
+				</property>
+			</object>
+		</property>
+	</object>
+</interface>

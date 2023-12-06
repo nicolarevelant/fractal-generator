@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+	<object id="settingsGrid" class="GtkGrid">
+		<property name="margin-top">10</property>
+		<property name="margin-bottom">10</property>
+		<property name="margin-start">10</property>
+		<property name="margin-end">10</property>
+		<property name="column-spacing">10</property>
+		<property name="row-spacing">10</property>
+		<child>
+			<object class="GtkLabel">
+				<property name="label">Max iterations:</property>
+				<layout>
+					<property name="row">0</property>
+					<property name="column">0</property>
+				</layout>
+			</object>
+		</child>
+		<child>
+			<object id="spinMaxIter" class="GtkSpinButton">
+				<property name="width-request">180</property>
+				<property name="adjustment">
+					<object class="GtkAdjustment">
+						<property name="lower">1</property>
+						<property name="upper">500</property>
+						<property name="step-increment">1</property>
+					</object>
+				</property>
+				<layout>
+					<property name="row">0</property>
+					<property name="column">1</property>
+				</layout>
+			</object>
+		</child>
+
+		<child>
+			<object class="GtkLabel">
+				<property name="label">Translate step</property>
+				<layout>
+					<property name="row">1</property>
+					<property name="column">0</property>
+				</layout>
+			</object>
+		</child>
+		<child>
+			<object id="spinTranslateStep" class="GtkSpinButton">
+				<property name="adjustment">
+					<object class="GtkAdjustment">
+						<property name="lower">0.01</property>
+						<property name="upper">0.5</property>
+						<property name="step-increment">0.001</property>
+					</object>
+				</property>
+				<property name="digits">3</property>
+				<layout>
+					<property name="row">1</property>
+					<property name="column">1</property>
+				</layout>
+			</object>
+		</child>
+
+		<child>
+			<object class="GtkLabel">
+				<property name="label">Zoom step</property>
+				<layout>
+					<property name="row">2</property>
+					<property name="column">0</property>
+				</layout>
+			</object>
+		</child>
+		<child>
+			<object id="spinZoomStep" class="GtkSpinButton">
+				<property name="adjustment">
+					<object class="GtkAdjustment">
+						<property name="lower">1.01</property>
+						<property name="upper">4</property>
+						<property name="step-increment">0.001</property>
+					</object>
+				</property>
+				<property name="digits">3</property>
+				<layout>
+					<property name="row">2</property>
+					<property name="column">1</property>
+				</layout>
+			</object>
+		</child>
+
+		<child>
+			<object class="GtkLabel">
+				<property name="label">Initial zoom</property>
+				<layout>
+					<property name="row">3</property>
+					<property name="column">0</property>
+				</layout>
+			</object>
+		</child>
+		<child>
+			<object id="spinVideoInitZoom" class="GtkSpinButton">
+				<property name="adjustment">
+					<object class="GtkAdjustment">
+						<property name="lower">0.1</property>
+						<property name="upper">100</property>
+						<property name="step-increment">0.1</property>
+					</object>
+				</property>
+				<property name="digits">1</property>
+				<layout>
+					<property name="row">3</property>
+					<property name="column">1</property>
+				</layout>
+			</object>
+		</child>
+
+		<child>
+			<object class="GtkLabel">
+				<property name="label">Zoom speed</property>
+				<layout>
+					<property name="row">4</property>
+					<property name="column">0</property>
+				</layout>
+			</object>
+		</child>
+		<child>
+			<object id="spinVideoZoomSpeed" class="GtkSpinButton">
+				<property name="adjustment">
+					<object class="GtkAdjustment">
+						<property name="lower">1.001</property>
+						<property name="upper">4.0</property>
+						<property name="step-increment">0.001</property>
+					</object>
+				</property>
+				<property name="digits">3</property>
+				<layout>
+					<property name="row">4</property>
+					<property name="column">1</property>
+				</layout>
+			</object>
+		</child>
+
+		<child>
+			<object class="GtkLabel">
+				<property name="label">Frame quality</property>
+				<layout>
+					<property name="row">6</property>
+					<property name="column">0</property>
+				</layout>
+			</object>
+		</child>
+		<child>
+			<object id="frameSize" class="GtkDropDown">
+				<property name="model">
+					<object class="GtkStringList">
+						<items>
+							<item>576p SD (16:9)</item>
+							<item>1080p FHD (16:9)</item>
+							<item>2.16 MP (3:2)</item>
+							<item>4K UHD (16:9)</item>
+							<item>8.0 MP (4:3)</item>
+							<item>24 MP (3:2)</item>
+							<item>8K UHD (16:9)</item>
+						</items>
+					</object>
+				</property>
+				<layout>
+					<property name="row">6</property>
+					<property name="column">1</property>
+				</layout>
+			</object>
+		</child>
+
+	</object>
+</interface>

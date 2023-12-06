@@ -1,0 +1,1 @@
+add_library(app_ui app_ui.c app_ui_utils.h app_ui_utils.c app_ui_gl_area.c app_ui_settings.c app_ui_home.c)

@@ -1,0 +1,40 @@
+<schemalist>
+	<schema id="com.nicolarevelant.fractal-generator" path="/com/nicolarevelant/fractal-generator/">
+		<key name="max-iterations" type="i">
+			<range min="1" max="500"/>
+			<default>500</default>
+			<summary>Max iterations</summary>
+		</key>
+
+		<key name="translate-step" type="d">
+			<range min="0.01" max="0.5"/>
+			<default>0.25</default>
+			<summary>Translate step</summary>
+		</key>
+
+		<key name="zoom-step" type="d">
+			<range min="1.01" max="4.0"/>
+			<default>1.5</default>
+			<summary>Zoom step</summary>
+		</key>
+
+		<key name="mouse-zoom-step" type="d">
+			<range min="1.01" max="4.0"/>
+			<default>2.0</default>
+			<summary>Zoom step used by left and right mouse click</summary>
+		</key>
+
+		<key name="video-init-zoom" type="d">
+			<range min="0.1" max="100.0"/>
+			<default>0.4</default>
+			<summary>Initial zoom for video</summary>
+		</key>
+
+		<key name="video-zoom-speed" type="d">
+			<range min="1.001" max="4.0"/>
+			<default>1.03</default>
+			<summary>Zoom step for each video frame</summary>
+		</key>
+
+	</schema>
+</schemalist>
