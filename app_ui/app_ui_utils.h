@@ -9,7 +9,7 @@
 #ifdef DEBUG
 	#define debug_printerr(x, ...) g_printerr(x, ##__VA_ARGS__)
 #else
-	#define debug_printerr(x, ...) {}
+	#define debug_printerr(x, ...)
 #endif
 
 #define DATA_PATH "../"
