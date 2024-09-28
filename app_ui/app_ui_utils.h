@@ -2,7 +2,7 @@
 #define APP_UI_UTILS_H
 
 #include <libintl.h>
-#include "adwaita.h"
+#include <adwaita.h>
 #include "../fractal/fractal.h"
 #include "project_variables.h"
 

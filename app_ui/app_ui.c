@@ -70,7 +70,7 @@ extern void on_app_activate(GtkApplication *app) {
 // end public functions
 
 static void show_about_dialog(GtkWindow *window) {
-	adw_show_about_window(window,
+	adw_show_about_dialog(GTK_WIDGET(window),
 						  "application-name", PROJECT_NAME,
 						  "application-icon", ICON_NAME,
 						  "developer-name", "Nicola Revelant",
