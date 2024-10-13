@@ -1,5 +1,6 @@
 #include "app_ui/app_ui.h"
 #include <getopt.h>
+#include "project_variables.h"
 
 static struct option long_options[] = {{"help",    no_argument, NULL, 'h'},
                                        {"version", no_argument, NULL, 'v'},
@@ -24,9 +25,7 @@ int main(int argc, char **argv) {
 		}
 	}
 
-	AdwApplication *app = adw_application_new(APPLICATION_ID, G_APPLICATION_DEFAULT_FLAGS);
-	g_signal_connect(app, "activate", G_CALLBACK(on_app_activate), NULL);
-	return g_application_run(G_APPLICATION(app), argc, argv);
+	start_ui(argc, argv);
 }
 
 static void printHelp(const char *programName) {

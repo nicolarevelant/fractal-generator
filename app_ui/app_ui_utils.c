@@ -41,3 +41,12 @@ GtkSpinButton *zoomStep_spinBtn;
 GtkSpinButton *video_init_zoom;
 GtkSpinButton *video_zoom_speed;
 GtkDropDown *frameSizeDropDown;
+
+void switch_fractal() {
+	if (mb_tmp_config.use_julia)
+		mb_tmp_config.use_julia = 0;
+	else
+		mb_tmp_config.use_julia = 1;
+	
+	glAreaUpdate();
+}

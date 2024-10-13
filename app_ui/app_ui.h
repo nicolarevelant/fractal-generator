@@ -4,15 +4,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "app_ui_utils.h"
-
 #define APPLICATION_ID "com.nicolarevelant.fractal-generator"
 
-/**
- * Callback called when the GtkApplication activate the app
- * @param app The GtkApplication of the project
- */
-extern void on_app_activate(GtkApplication *app);
+int start_ui(int argc, char **argv);
 
 #endif /* APP_UI_H */
 

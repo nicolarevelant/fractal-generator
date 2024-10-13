@@ -1,9 +1,9 @@
-#include "fractal.h"
-#include <signal.h>
-#include <unistd.h>
 #include <libpng16/png.h>
 #include <pthread.h>
 #include <semaphore.h>
+
+#include "fractal.h"
+#include "../video/video.h"
 
 // for gen photos
 static int mb_gen_status;

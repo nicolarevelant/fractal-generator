@@ -5,11 +5,6 @@
 #include <stdlib.h>
 #include <libavformat/avformat.h>
 #include <libavcodec/avcodec.h>
-#include <libavutil/timestamp.h>
-#include <libavutil/pixdesc.h>
-#include <libavutil/opt.h>
-#include <libswscale/swscale.h>
-#include <libswresample/swresample.h>
 
 #define VIDEO_CODEC_ID AV_CODEC_ID_HEVC
 #define VIDEO_PIX_FMT AV_PIX_FMT_YUV420P

@@ -27,7 +27,6 @@ configure_file(output: 'project_variables.h',
 
 executable(meson.project_name(),
     sources: files,
-    dependencies: dependency('libadwaita-1'),
     link_with: [app_ui],
     include_directories: include_directories('.')
 )

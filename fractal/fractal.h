@@ -3,7 +3,6 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "../video/video.h"
 
 #define PROGRESS_DELAY_NANOSECONDS 100 * 1000 * 1000 // 100 ms
 

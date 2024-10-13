@@ -1,11 +1,11 @@
 dependencies = [
     dependency('libpng'),
-    dependency('libavutil')
+    dependency('libavutil'),
+    dependency('threads')
 ]
 
 fractal = library('fractal',
     'fractal.c',
     link_with: [video],
-    link_args: '-lm',
     dependencies: dependencies
 )

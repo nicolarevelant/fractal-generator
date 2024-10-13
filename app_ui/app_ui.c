@@ -1,4 +1,5 @@
 #include "app_ui.h"
+#include "app_ui_utils.h"
 
 static const char *authors[] = {
         "Nicola Revelant <nicolarevelant@outlook.com>", NULL
@@ -7,6 +8,12 @@ static const char *designers[] = {
         "Nicola Revelant <nicolarevelant@outlook.com>", NULL
 };
 
+/**
+ * Callback called when the GtkApplication activate the app
+ * @param app The GtkApplication of the project
+ */
+static void on_app_activate(GtkApplication *app);
+
 static void show_about_dialog(GtkWindow *window);
 
 static void on_window_destroy();
@@ -14,7 +21,15 @@ static gboolean on_window_key_pressed(GtkEventControllerKey *, guint key, guint,
 
 // public functions
 
-extern void on_app_activate(GtkApplication *app) {
+int start_ui(int argc, char **argv) {
+	AdwApplication *app = adw_application_new(APPLICATION_ID, G_APPLICATION_DEFAULT_FLAGS);
+	g_signal_connect(app, "activate", G_CALLBACK(on_app_activate), NULL);
+	return g_application_run(G_APPLICATION(app), argc, argv);
+}
+
+// end public functions
+
+static void on_app_activate(GtkApplication *app) {
 	GtkBuilder *builder = gtk_builder_new();
 	GError *error = NULL;
 	if (!gtk_builder_add_from_file(builder, DATA_PATH"ui/app_ui.ui", &error)) {
@@ -66,8 +81,6 @@ extern void on_app_activate(GtkApplication *app) {
 	gtk_window_present(window);
 	g_object_unref(builder);
 }
-
-// end public functions
 
 static void show_about_dialog(GtkWindow *window) {
 	adw_show_about_dialog(GTK_WIDGET(window),
@@ -177,13 +190,4 @@ gboolean on_window_key_pressed(GtkEventControllerKey *, guint key, guint, GdkMod
 
 	if (configChanged) glAreaUpdate();
 	return configChanged; // if TRUE it blocks event propagation
-}
-
-void switch_fractal() {
-	if (mb_tmp_config.use_julia)
-		mb_tmp_config.use_julia = 0;
-	else
-		mb_tmp_config.use_julia = 1;
-	
-	glAreaUpdate();
 }

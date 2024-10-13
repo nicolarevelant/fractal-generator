@@ -1,5 +1,8 @@
 #include "video.h"
 #include <math.h>
+#include <libavutil/opt.h>
+#include <libswscale/swscale.h>
+#include <libswresample/swresample.h>
 
 // private functions
 static int close_all(VideoCtx *ctx);
