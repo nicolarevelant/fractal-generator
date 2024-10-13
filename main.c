@@ -1,6 +1,8 @@
 #include "app_ui/app_ui.h"
-#include <getopt.h>
 #include "project_variables.h"
+
+#include <getopt.h>
+#include <libintl.h>
 
 static struct option long_options[] = {{"help",    no_argument, NULL, 'h'},
                                        {"version", no_argument, NULL, 'v'},
@@ -24,6 +26,9 @@ int main(int argc, char **argv) {
 				return -1;
 		}
 	}
+
+	bindtextdomain(PROJECT_NAME, LOCALEDIR);
+	textdomain (PROJECT_NAME);
 
 	start_ui(argc, argv);
 }

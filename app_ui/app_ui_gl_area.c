@@ -1,8 +1,8 @@
 #include "app_ui_utils.h"
 #include "../glad/glad.h"
 
-#define VERTEX_SHADER_PATH DATA_PATH"shader/vertex.glsl"
-#define FRAGMENT_SHADER_PATH DATA_PATH"shader/fragment.glsl"
+#define VERTEX_SHADER_PATH DATADIR"/shader/vertex.glsl"
+#define FRAGMENT_SHADER_PATH DATADIR"/shader/fragment.glsl"
 #define BUF_SIZE 2048
 
 static const GLfloat vertices[] = {

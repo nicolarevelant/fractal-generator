@@ -1,0 +1,41 @@
+#: app_ui/app_ui_home.c:70
+msgid "Photo"
+msgstr "Foto"
+
+#: app_ui/app_ui_home.c:105
+msgid "Video"
+msgstr "Video"
+
+#: app_ui/app_ui_home.c:148
+msgid "Idle"
+msgstr "Inattivo"
+
+#: app_ui/app_ui_home.c:152
+#, c-format
+msgid "Progress: %.2f %%"
+msgstr "Progresso: %.2f %%"
+
+#: app_ui/app_ui_home.c:157
+#, c-format
+msgid "Progress: %02d:%02d.%02d"
+msgstr "Progresso: %02d:%02d.%02d"
+
+#: app_ui/app_ui_home.c:166
+msgid "Save error"
+msgstr "Errore di salvataggio"
+
+#: ui/app_ui_home.ui:19
+msgid "_Photo"
+msgstr "_Foto"
+
+#: ui/app_ui_home.ui:36
+msgid "_Video"
+msgstr "_Video"
+
+#: ui/app_ui_home.ui:58
+msgid "_Stop"
+msgstr "_Ferma"
+
+#: ui/app_ui_home.ui:74
+msgid "S_witch fractal"
+msgstr "C_ambia frattale"

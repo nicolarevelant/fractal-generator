@@ -32,7 +32,7 @@ int start_ui(int argc, char **argv) {
 static void on_app_activate(GtkApplication *app) {
 	GtkBuilder *builder = gtk_builder_new();
 	GError *error = NULL;
-	if (!gtk_builder_add_from_file(builder, DATA_PATH"ui/app_ui.ui", &error)) {
+	if (!gtk_builder_add_from_file(builder, DATADIR"/ui/app_ui.ui", &error)) {
 		debug_printerr(" [EE] Cannot create UI: %s\n", error->message);
 		g_printerr("Application error, closing\n");
 		g_error_free(error);

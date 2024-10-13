@@ -1,0 +1,60 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the fractal-generator package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: fractal-generator\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-10-13 19:30+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: app_ui/app_ui_home.c:70
+msgid "Photo"
+msgstr ""
+
+#: app_ui/app_ui_home.c:105
+msgid "Video"
+msgstr ""
+
+#: app_ui/app_ui_home.c:148
+msgid "Idle"
+msgstr ""
+
+#: app_ui/app_ui_home.c:152
+#, c-format
+msgid "Progress: %.2f %%"
+msgstr ""
+
+#: app_ui/app_ui_home.c:157
+#, c-format
+msgid "Progress: %02d:%02d.%02d"
+msgstr ""
+
+#: app_ui/app_ui_home.c:166
+msgid "Save error"
+msgstr ""
+
+#: ui/app_ui_home.ui:19
+msgid "_Photo"
+msgstr ""
+
+#: ui/app_ui_home.ui:36
+msgid "_Video"
+msgstr ""
+
+#: ui/app_ui_home.ui:58
+msgid "_Stop"
+msgstr ""
+
+#: ui/app_ui_home.ui:74
+msgid "S_witch fractal"
+msgstr ""

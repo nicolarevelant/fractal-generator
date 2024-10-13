@@ -27,7 +27,7 @@ static GtkLabel *statusLabel;
 GtkWidget *create_home_layout() {
 	GtkBuilder *builder = gtk_builder_new();
 	GError *error = NULL;
-	if (!gtk_builder_add_from_file(builder, DATA_PATH"ui/app_ui_home.ui", &error)) {
+	if (!gtk_builder_add_from_file(builder, DATADIR"/ui/app_ui_home.ui", &error)) {
 		debug_printerr(" [EE] Cannot create home layout: %s\n", error->message);
 		g_error_free(error);
 		return NULL;

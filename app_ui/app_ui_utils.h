@@ -3,6 +3,7 @@
 
 #include <libintl.h>
 #include <adwaita.h>
+
 #include "../fractal/fractal.h"
 #include "project_variables.h"
 
@@ -11,8 +12,6 @@
 #else
 	#define debug_printerr(x, ...)
 #endif
-
-#define DATA_PATH "../"
 
 #define _(String) gettext (String)
 
