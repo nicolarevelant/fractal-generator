@@ -4,9 +4,13 @@ project(fractal-generator
 		VERSION 1.0.0
 		LANGUAGES C)
 
+include(GNUInstallDirs)
+
 set(PROJECT_COPYRIGHT "Copyright (C) 2023 Nicola Revelant")
 set(PROJECT_LICENSE "GNU General Public License, version 3 or later")
 set(ICON_NAME "fractal-generator")
+set(DATADIR "${CMAKE_INSTALL_FULL_DATADIR}/${PROJECT_NAME}")
+set(LOCALEDIR "${CMAKE_INSTALL_FULL_LOCALEDIR}")
 
 set(CMAKE_C_EXTENSIONS OFF)
 set(CMAKE_C_STANDARD 99)
@@ -28,8 +32,6 @@ target_link_libraries(${PROJECT_NAME} app_ui fractal video glad)
 target_link_libraries(${PROJECT_NAME} ${LIBS_LIBRARIES} m)
 
 configure_file(project_variables.h.in project_variables.h)
-
-include(GNUInstallDirs)
 
 install(FILES "gschemas/com.nicolarevelant.fractal-generator.gschema.xml"
 		DESTINATION "${CMAKE_INSTALL_DATADIR}/glib-2.0/schemas")

@@ -4,3 +4,5 @@
 #cmakedefine PROJECT_LICENSE "@PROJECT_LICENSE@"
 #cmakedefine PROJECT_COPYRIGHT "@PROJECT_COPYRIGHT@"
 #cmakedefine ICON_NAME "@ICON_NAME@"
+#cmakedefine DATADIR "@DATADIR@"
+#cmakedefine LOCALEDIR "@LOCALEDIR@"

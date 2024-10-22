@@ -31,7 +31,8 @@ configure_file(output: 'project_variables.h',
 executable(meson.project_name(),
     sources: files,
     link_with: [app_ui],
-    include_directories: include_directories('.')
+    include_directories: include_directories('.'),
+    install: true
 )
 
 install_data('gschemas/com.nicolarevelant.fractal-generator.gschema.xml',
