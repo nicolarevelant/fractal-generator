@@ -1,6 +1,6 @@
 project('fractal-generator', 'c',
     license: 'GNU General Public License, version 3 or later',
-    version: '1.0.0beta'
+    version: '1.0.0'
 )
 
 subdir('po')
