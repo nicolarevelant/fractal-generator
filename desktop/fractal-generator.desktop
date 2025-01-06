@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Fractal Generator
+Comment=Mandelbrot and Julia fractal generator
+Keywords=Mandelbrot;Julia;fractal;
+Exec=fractal-generator %U
+Icon=fractal-generator
+Terminal=false
+Categories=Utilities;
