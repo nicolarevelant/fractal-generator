@@ -12,7 +12,7 @@ dependencies = [
     dependency('gl')
 ]
 
-app_ui = library('app_ui',
+app_ui = static_library('app_ui',
     sources: files,
     dependencies: dependencies,
     link_with: [fractal, glad],

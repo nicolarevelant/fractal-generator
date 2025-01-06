@@ -31,6 +31,7 @@ configure_file(output: 'project_variables.h',
 executable(meson.project_name(),
     sources: files,
     link_with: [app_ui],
+    link_args: '-lm',
     include_directories: include_directories('.'),
     install: true
 )

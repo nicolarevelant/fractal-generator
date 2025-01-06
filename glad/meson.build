@@ -1,1 +1,1 @@
-glad = library('glad','glad.c')
+glad = static_library('glad','glad.c')

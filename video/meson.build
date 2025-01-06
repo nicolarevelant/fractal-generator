@@ -6,7 +6,6 @@ dependencies = [
     dependency('libswscale')
 ]
 
-video = library('video', 'video.c',
-    dependencies: dependencies,
-    link_args: '-lm'
+video = static_library('video', 'video.c',
+    dependencies: dependencies
 )

@@ -4,7 +4,7 @@ dependencies = [
     dependency('threads')
 ]
 
-fractal = library('fractal',
+fractal = static_library('fractal',
     'fractal.c',
     link_with: [video],
     dependencies: dependencies
