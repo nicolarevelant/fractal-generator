@@ -1,9 +1,9 @@
 #include "app_ui_utils.h"
 
 fractal_config_t mb_tmp_config = {
-		//0.3983541193151654, // x
-		//0.19514111158909933, // y
-		0.285, 0, 100.0, // x, y, zoom
+		0.3983541193151654, // x
+		0.19514111158909933, // y
+		100.0, // zoom
 
 		0, 0, 1.0, // julia_x, julia_y, julia_zoom
 
