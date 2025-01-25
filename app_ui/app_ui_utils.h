@@ -1,19 +1,19 @@
 #ifndef APP_UI_UTILS_H
 #define APP_UI_UTILS_H
 
-#include <libintl.h>
 #include <adwaita.h>
+#include <libintl.h>
 
 #include "../fractal/fractal.h"
 #include "project_variables.h"
 
 #ifdef DEBUG
-	#define debug_printerr(x, ...) g_printerr(x, ##__VA_ARGS__)
+#define debug_printerr(x, ...) g_printerr(x, ##__VA_ARGS__)
 #else
-	#define debug_printerr(x, ...)
+#define debug_printerr(x, ...)
 #endif
 
-#define _(String) gettext (String)
+#define _(String) gettext(String)
 
 #define GIO_SETTINGS_SCHEMA "com.nicolarevelant.fractal-generator"
 
@@ -24,21 +24,19 @@
 extern fractal_config_t mb_tmp_config;
 extern int ui_blocked;
 
-typedef enum {
-	IDLE, PHOTO_PROGRESS, VIDEO_PROGRESS, ERR_SAVE
-} update_state_t;
+typedef enum { IDLE, PHOTO_PROGRESS, VIDEO_PROGRESS, ERR_SAVE } update_state_t;
 
 /**
  * Data to be passed from the work thread to the main thread to update UI
-*/
+ */
 typedef struct {
-	update_state_t state;
-	float progress;
+    update_state_t state;
+    float progress;
 } UpdateData;
 
 typedef struct {
-	int width;
-	int height;
+    int width;
+    int height;
 } Size;
 
 extern const Size frameResolutions[];

@@ -1,10 +1,10 @@
 #ifndef VIDEO_H
 #define VIDEO_H
 
+#include <libavcodec/avcodec.h>
+#include <libavformat/avformat.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <libavformat/avformat.h>
-#include <libavcodec/avcodec.h>
 
 #define VIDEO_CODEC_ID AV_CODEC_ID_HEVC
 #define VIDEO_PIX_FMT AV_PIX_FMT_YUV420P
@@ -12,7 +12,7 @@
 
 /**
  * Main struct used to encode and mux videos
-*/
+ */
 typedef struct VideoCtx {
     AVFormatContext *mux_ctx;
 
@@ -41,7 +41,9 @@ typedef struct VideoCtx {
  * metadata: Muxer metadata
  * Returns the video context with result = 0, or NULL if error with result != 0
  */
-extern VideoCtx *video_ctx_new(int *result, char *filename, int w, int h, int framerate, enum AVPixelFormat pix_fmt_src, AVDictionary *metadata);
+extern VideoCtx *video_ctx_new(int *result, char *filename, int w, int h,
+                               int framerate, enum AVPixelFormat pix_fmt_src,
+                               AVDictionary *metadata);
 
 /**
  * Send a NULL frame to video_send_frame and free ctx
@@ -54,4 +56,3 @@ extern void video_ctx_free(VideoCtx *ctx);
 extern int video_send_frame(VideoCtx *ctx, const uint8_t *data, int stride);
 
 #endif /* VIDEO_H */
-

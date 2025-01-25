@@ -9,4 +9,3 @@
 int start_ui(int argc, char **argv);
 
 #endif /* APP_UI_H */
-
