@@ -23,6 +23,7 @@ conf_data.set_quoted('PROJECT_COPYRIGHT', 'Copyright (C) 2024 Nicola Revelant')
 conf_data.set_quoted('ICON_NAME', meson.project_name())
 conf_data.set_quoted('DATADIR', get_option('prefix') / get_option('datadir') / meson.project_name())
 conf_data.set_quoted('LOCALEDIR', get_option('prefix') / get_option('localedir'))
+conf_data.set('DEBUG', get_option('buildtype') == 'debug')
 
 configure_file(output: 'project_variables.h',
     configuration: conf_data

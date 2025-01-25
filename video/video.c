@@ -1,4 +1,5 @@
 #include "video.h"
+#include "../project_variables.h"
 #include <libavutil/opt.h>
 #include <libswresample/swresample.h>
 #include <libswscale/swscale.h>
@@ -215,21 +216,21 @@ int video_stream_init(VideoCtx *ctx, int width, int height, int framerate,
     video_ctx->time_base.num = 1;
     video_ctx->time_base.den = framerate;
 
-    /*if (av_opt_set(video_ctx->priv_data, "crf", VIDEO_CRF, 0)) {
-            return -1;
-    }*/
-
-    // pixel format of video codec: chroma 4:2:0
-    video_ctx->pix_fmt = VIDEO_PIX_FMT;
+    const enum AVPixelFormat *pixelFormats = NULL;
+    avcodec_get_supported_config(video_ctx, codec, AV_CODEC_CONFIG_PIX_FORMAT,
+                                 0, (const void **)&pixelFormats, NULL);
 
 #ifdef DEBUG
-    const enum AVPixelFormat *tmp = codec->pix_fmts;
+    const enum AVPixelFormat *tmp = pixelFormats;
     fprintf(stderr, " [DD] Pixel formats:");
     while (*tmp != AV_PIX_FMT_NONE) {
         fprintf(stderr, " %d", *tmp++);
     }
     fprintf(stderr, "\n");
 #endif
+
+    // pixel format of video codec: chroma 4:2:0
+    video_ctx->pix_fmt = VIDEO_PIX_FMT;
 
     // keyframe every quarter second
     video_ctx->gop_size = framerate / 4;
@@ -298,18 +299,24 @@ int audio_stream_init(VideoCtx *ctx) {
         return -1;
     }
 
-    audio_ctx->sample_fmt =
-        codec->sample_fmts ? *codec->sample_fmts : AV_SAMPLE_FMT_FLTP;
+    const enum AVSampleFormat *sampleFormats = NULL;
+    avcodec_get_supported_config(audio_ctx, codec,
+                                 AV_CODEC_CONFIG_SAMPLE_FORMAT, 0,
+                                 (const void **)&sampleFormats, NULL);
+
+    const int *sampleRates = NULL;
+    avcodec_get_supported_config(audio_ctx, codec, AV_CODEC_CONFIG_SAMPLE_RATE,
+                                 0, (const void **)&sampleRates, NULL);
 
 #ifdef DEBUG
-    const enum AVSampleFormat *tmp = codec->sample_fmts;
+    const enum AVSampleFormat *tmp = sampleFormats;
     fprintf(stderr, " [DD] Sample formats:");
     while (*tmp != AV_SAMPLE_FMT_NONE) {
         fprintf(stderr, " %d", *tmp++);
     }
     fprintf(stderr, "\n");
 
-    const int *tmp2 = codec->supported_samplerates;
+    const int *tmp2 = sampleRates;
     fprintf(stderr, " [DD] Sample rates:");
     while (*tmp2) {
         fprintf(stderr, " %d", *tmp2++);
@@ -317,7 +324,9 @@ int audio_stream_init(VideoCtx *ctx) {
     fprintf(stderr, "\n");
 #endif
 
+    audio_ctx->sample_fmt = AV_SAMPLE_FMT_FLTP;
     audio_ctx->sample_rate = 44100;
+
     audio_ctx->ch_layout = (AVChannelLayout)AV_CHANNEL_LAYOUT_STEREO;
     audio_stream->time_base = (AVRational){1, audio_ctx->sample_rate};
 
