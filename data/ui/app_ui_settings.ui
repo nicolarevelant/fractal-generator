@@ -72,8 +72,8 @@
 			<object id="spinZoomStep" class="GtkSpinButton">
 				<property name="adjustment">
 					<object class="GtkAdjustment">
-						<property name="lower">1.01</property>
-						<property name="upper">4</property>
+						<property name="lower">1.001</property>
+						<property name="upper">10</property>
 						<property name="step-increment">0.001</property>
 					</object>
 				</property>
