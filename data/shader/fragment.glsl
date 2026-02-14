@@ -1,5 +1,7 @@
 #version 400
 
+precision lowp float;
+
 in vec2 position;
 out vec4 FragColor;
 uniform dvec3 mb; // x, y, zoom
@@ -11,7 +13,7 @@ uniform vec3 palette[501];
 void main()
 {
 	dvec2 c;
-	if (julia.z != 0)
+	if (julia.z != 0.0)
 		// Julia
 		c = dvec2((position.x * ratio) / julia.z + julia.x,
 					position.y / julia.z + julia.y);
@@ -24,7 +26,7 @@ void main()
 	int itr;
 	for (itr = 0; itr < 500; itr++) {
 		if (itr == maxItr || dot(pos, pos) > 4.0) break;
-		if (julia.z != 0)
+		if (julia.z != 0.0)
 			// Julia
 			pos = dvec2(pos.x*pos.x - pos.y*pos.y, 2.0*pos.x*pos.y) + mb.xy;
 		else

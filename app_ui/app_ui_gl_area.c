@@ -1,5 +1,6 @@
-#include "../glad/glad.h"
 #include "app_ui_utils.h"
+#include "epoxy/gl.h"
+#include <epoxy/glx.h>
 
 #define VERTEX_SHADER_PATH DATADIR "/shader/vertex.glsl"
 #define FRAGMENT_SHADER_PATH DATADIR "/shader/fragment.glsl"
@@ -29,8 +30,8 @@ static float gl_palette[3 * (PV_MAX_ITERATION_LIMIT + 1)];
 
 GtkWidget *create_gl_area() {
     glArea = GTK_GL_AREA(gtk_gl_area_new());
-    g_object_set(glArea, "width-request", 300, "height-request", 300, NULL);
-    gtk_gl_area_set_required_version(glArea, 4, 0);
+    g_object_set(glArea, "width-request", 300, "height-request", 300,
+                 "allowed-apis", GDK_GL_API_GL, NULL);
 
     GtkGesture *gestureController = gtk_gesture_click_new();
     g_object_set(gestureController, "propagation-phase", GTK_PHASE_CAPTURE,
@@ -64,7 +65,7 @@ void on_window_left_pressed(GtkGestureClick *, gint, gdouble x, gdouble y,
     int width = gtk_widget_get_width(GTK_WIDGET(glArea));
     int height = gtk_widget_get_height(GTK_WIDGET(glArea));
     g_printerr("Left: %lf %lf\n", x / width, y / height);
-    double zoom = g_settings_get_double(settings, "mouse-zoom-step");
+    double zoom = g_settings_get_double(settings, "zoom-step");
 
     double relx = (x - width / 2.0);
     double rely = (y - height / 2.0);
@@ -92,7 +93,7 @@ void on_window_right_pressed(GtkGestureClick *, gint, gdouble x, gdouble y,
     int width = gtk_widget_get_width(GTK_WIDGET(glArea));
     int height = gtk_widget_get_height(GTK_WIDGET(glArea));
     g_printerr("Right: %lf %lf\n", x / width, y / height);
-    double zoom = g_settings_get_double(settings, "mouse-zoom-step");
+    double zoom = g_settings_get_double(settings, "zoom-step");
 
     double relx = (x - width / 2.0);
     double rely = (y - height / 2.0);
@@ -113,12 +114,14 @@ void on_window_right_pressed(GtkGestureClick *, gint, gdouble x, gdouble y,
 
 void on_realize() {
     if (!glArea) {
-        debug_printerr(" [WW] glArea.on_realize: glArea is NULL\n");
+        debug_printerr(" [EE] glArea.on_realize: glArea is NULL\n");
         return;
     }
     gtk_gl_area_make_current(glArea);
-    if (!gladLoadGL()) {
-        debug_printerr(" [EE] OpenGL not supported\n");
+
+    debug_printerr(" [DD] Current API: %d\n", gtk_gl_area_get_api(glArea));
+    if (gtk_gl_area_get_api(glArea) != GDK_GL_API_GL) {
+        debug_printerr(" [EE] gtk_gl_area_get_api != GDK_GL_API_GL\n");
         return;
     }
 
@@ -127,7 +130,7 @@ void on_realize() {
     debug_printerr(" [DD] OpenGL version supported: %s\n",
                    glGetString(GL_VERSION));
 
-    debug_printerr(" [DD] OpenGL %d.%d\n", GLVersion.major, GLVersion.minor);
+    // debug_printerr(" [DD] OpenGL %d.%d\n", GLVersion.major, GLVersion.minor);
 
     init_program();
 }
@@ -184,6 +187,7 @@ void init_program() {
 
     GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
     glShaderSource(vertexShader, 1, (const GLchar *const *)&shaderSource, NULL);
+    glCompileShader(vertexShader);
     free(shaderSource);
 
     glCompileShader(vertexShader);
@@ -204,6 +208,7 @@ void init_program() {
     GLuint fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
     glShaderSource(fragmentShader, 1, (const GLchar *const *)&shaderSource,
                    NULL);
+    glCompileShader(fragmentShader);
     free(shaderSource);
 
     glCompileShader(fragmentShader);

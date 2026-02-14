@@ -13,15 +13,9 @@
 		</key>
 
 		<key name="zoom-step" type="d">
-			<range min="1.01" max="4.0"/>
+			<range min="1.001" max="10.0"/>
 			<default>1.5</default>
 			<summary>Zoom step</summary>
-		</key>
-
-		<key name="mouse-zoom-step" type="d">
-			<range min="1.01" max="4.0"/>
-			<default>2.0</default>
-			<summary>Zoom step used by left and right mouse click</summary>
 		</key>
 
 		<key name="video-init-zoom" type="d">
