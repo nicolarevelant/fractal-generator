@@ -64,7 +64,7 @@ void on_window_left_pressed(GtkGestureClick *, gint, gdouble x, gdouble y,
     }
     int width = gtk_widget_get_width(GTK_WIDGET(glArea));
     int height = gtk_widget_get_height(GTK_WIDGET(glArea));
-    g_printerr("Left: %lf %lf\n", x / width, y / height);
+    debug_printerr(" [DD] Right click: %lf %lf\n", x / width, y / height);
     double zoom = g_settings_get_double(settings, "zoom-step");
 
     double relx = (x - width / 2.0);
@@ -92,7 +92,7 @@ void on_window_right_pressed(GtkGestureClick *, gint, gdouble x, gdouble y,
     }
     int width = gtk_widget_get_width(GTK_WIDGET(glArea));
     int height = gtk_widget_get_height(GTK_WIDGET(glArea));
-    g_printerr("Right: %lf %lf\n", x / width, y / height);
+    debug_printerr(" [DD] Right click: %lf %lf\n", x / width, y / height);
     double zoom = g_settings_get_double(settings, "zoom-step");
 
     double relx = (x - width / 2.0);
@@ -137,7 +137,7 @@ void on_realize() {
 
 gboolean on_render() {
     if (!glArea) {
-        g_printerr(" [WW] glArea is NULL\n");
+        debug_printerr(" [EE] glArea is NULL\n");
         return TRUE;
     }
     glDrawArrays(GL_TRIANGLES, 0, 6);
